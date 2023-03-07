@@ -1,0 +1,4 @@
+- Installer le client mysql sur le serveur qui tourne app.sh
+- Créer la table sql Visiteur dans la BD
+- Voir comment récupérer les infos dans la bd directement pour
+l'affichage web

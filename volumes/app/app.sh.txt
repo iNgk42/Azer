@@ -1,0 +1,25 @@
+#!/bin/bash
+#path=~/volumes/app/localdb
+path=/root/app/localdb
+dbaddress="172.17.0.2"
+
+clear
+echo "WELCOME TO ChoiceApp !"
+
+continue="oui"
+while [ "$continue" == "oui" ]
+do
+  read -p "Entrez votre pseudo: " pseudo
+  read -p "Quel est votre OS préféré, Linux(L) ou Windows(W)?: " choix
+  read -p "Laissez un commentaire: " commentaire
+  read -p "Continuer? (oui / non): " continue
+  
+  echo "$pseudo $choix $commentaire" >> $path
+  mysql -h "$dbaddress" -u root appdb -e "INSERT INTO Visiteurs (pseudo, choix, commentaire) VALUES ('$pseudo', '$choix', '$commentaire');"
+
+  clear
+  echo -e "\nWELCOME TO ChoiceApp\n\n"
+done
+
+clear
+echo "Merci d'avoir utilisé notre App !"
